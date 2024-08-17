@@ -6,7 +6,8 @@ import { useEffect,useState } from 'react';
 import SidebarX from './sidebar';
 
 
-export default function MainPage(props: { value: string }) {
+
+export default function MainPage() {
   const [urlParam, setUrlParam] = useState<string | null>(null);
 
   useEffect(() => {
@@ -17,17 +18,17 @@ export default function MainPage(props: { value: string }) {
   }, []);
 
   // Use the hook value to control rendering
-  if (props.value === '1' || urlParam === '1') {
+  if ( urlParam === '1') {
     return (
     
       <div>
         <Public />
       </div>
     );
-  } else if (props.value === '2' || urlParam === '2') {
+  } else if (urlParam === '2') {
     return (
       <div>
-       {/* <offlineai/> */}
+      {/* <Debngui/> */}
       </div>
     );
   }

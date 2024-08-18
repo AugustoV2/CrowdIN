@@ -4,6 +4,8 @@ import React from "react";
 import Public from "./public";
 import { useEffect, useState } from "react";
 import SidebarX from "./sidebar";
+import Chat from "./chat";
+
 
 // Define the props interface matching the expected props
 interface MainPageProps {
@@ -22,7 +24,7 @@ export default function MainPage() {
     }
   }, []);
 
-  // Use the hook value to control rendering
+  
   if ( urlParam === '1') {
     return (
       <div>
@@ -32,7 +34,7 @@ export default function MainPage() {
   } else if (urlParam === '2') {
     return (
       <div>
-        <p>hoioooo</p>
+        <Chat/>
         </div>
     );
   }

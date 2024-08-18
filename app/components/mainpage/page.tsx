@@ -13,6 +13,7 @@ interface MainPageProps {
 
 export default function MainPage() {
   const [urlParam, setUrlParam] = useState<string | null>(null);
+  
 
   useEffect(() => {
     if (typeof window !== "undefined") {

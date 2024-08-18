@@ -1,19 +1,23 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react';
 import { CiImageOn } from "react-icons/ci";
 import { FaMicrophone } from "react-icons/fa6";
 import { useChat } from 'ai/react';
 import { Send } from 'lucide-react';
 
-
 const Public = () => {
-    const { messages, input, handleInputChange, handleSubmit } = useChat(
-        { api: '..//api/genai' }
-    );
+    const { messages, input, handleInputChange, handleSubmit } = useChat({
+        api: '/api/genai'
+    });
+
+    useEffect(() => {
+        console.log('Public component mounted');
+        console.log(messages); // Debugging to ensure messages are being updated
+    }, [messages]);
+
     return (
         <main>
             {RenderForm()}
-            {RenderMessage()}
         </main>
     );
 
@@ -30,11 +34,18 @@ const Public = () => {
                 <div className='flex flex-col' id='publicdem'>
                     <div className='flex flex-col mx-12 py-24 px-80'>
                         <h1 className='mb-4 mt-10 lg:text-6xl font-bold bg-gradient-to-r from-indigo-400 to-red-600 inline-block text-transparent bg-clip-text'>
-                            Hello,Chakka
+                            Hello, Man
                         </h1>
                         <p className='mb-8 text-gray-500 text-3xl'>
                             How can I help you today?
                         </p>
+                        <div className='flex flex-col items-center mt-8 ml-96 '>
+                            {messages.map((m, index) => (
+                                <div key={index} className={`p-4 shadow-md rounded-md w-1/2 ${m.role === 'user' ? 'bg-black text-white' : 'bg-gray-200 text-black'}`}>
+                                    {m.content}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                     <div className="relative min-h-screen">
                         <div className="flex justify-center items-center min-h-screen">
@@ -58,18 +69,6 @@ const Public = () => {
                     </div>
                 </div>
             </form>
-        );
-    }
-
-    function RenderMessage() {
-        return (
-            <div>
-                {messages.map((m, index) => (
-                    <div key={index} className={`p-4 shadow-md rounded-md ${m.role === 'user' ? 'bg-black text-white' : 'bg-gray-200 text-black'}`}>
-                        {m.content}
-                    </div>
-                ))}
-            </div>
         );
     }
 }

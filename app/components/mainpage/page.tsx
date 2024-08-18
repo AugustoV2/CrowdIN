@@ -31,8 +31,8 @@ export default function MainPage() {
   } else if (urlParam === '2') {
     return (
       <div>
-      {/* <Debngui/> */}
-      </div>
+        <p>hoioooo</p>
+        </div>
     );
   }
 

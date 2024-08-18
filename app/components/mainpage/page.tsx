@@ -1,10 +1,14 @@
-'use client'
+"use client";
 
-import React from 'react'
-import Public from './public'
-import { useEffect, useState } from 'react';
-import SidebarX from './sidebar';
+import React from "react";
+import Public from "./public";
+import { useEffect, useState } from "react";
+import SidebarX from "./sidebar";
 
+// Define the props interface matching the expected props
+interface MainPageProps {
+  value: string; // The prop that is passed to MainPage
+}
 
 
 export default function MainPage() {
@@ -12,38 +16,24 @@ export default function MainPage() {
   
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const searchParams = new URLSearchParams(window.location.search);
-      setUrlParam(searchParams.get('page'));
+      setUrlParam(searchParams.get("page"));
     }
   }, []);
-  let a=0;
-  
-  if (urlParam === '1') {
-     
 
-          if (a >0) {
-           
-          
-          } else {
-            a=a+1;
-            console.log(a);
-             return (
-               <div>
-                 <Public />
-               </div>
-             );
-
-          }
-        }
-       
-    
-
-   else if (urlParam === '2') {
+  // Use the hook value to control rendering
+  if ( urlParam === '1') {
     return (
       <div>
-        {/* <Debngui/> */}
+        <Public />
       </div>
+    );
+  } else if (urlParam === '2') {
+    return (
+      <div>
+        <p>hoioooo</p>
+        </div>
     );
   }
 

@@ -1,19 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Public from "./public";
-import { useEffect, useState } from "react";
 import SidebarX from "./sidebar";
-
-// Define the props interface matching the expected props
-interface MainPageProps {
-  value: string; // The prop that is passed to MainPage
-}
-
+import GoogleMapComponent from "./maping"; // Ensure this path is correct based on your file structure
 
 export default function MainPage() {
   const [urlParam, setUrlParam] = useState<string | null>(null);
-  
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -23,21 +16,25 @@ export default function MainPage() {
   }, []);
 
   // Use the hook value to control rendering
-  if ( urlParam === '1') {
+  if (urlParam === "1") {
     return (
       <div>
         <Public />
       </div>
     );
-  } else if (urlParam === '2') {
+  } else if (urlParam === "2") {
     return (
       <div>
         <p>hoioooo</p>
-        </div>
+      </div>
     );
-  }
-
-  else {
+  } else if (urlParam === "3") {
+    return (
+      <div>
+        <GoogleMapComponent />
+      </div>
+    );
+  } else {
     return (
       <div>
         <SidebarX />

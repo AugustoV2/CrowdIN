@@ -1,14 +1,14 @@
 'use client';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { IoReorderThreeOutline } from "react-icons/io5";
 import Sidebar from './mainpage/sidebar';
 import { MdClose } from "react-icons/md";
 
-const Navbar = () => {
+const Navbar = (): ReactElement => {
     const [isClicked, setIsClicked] = React.useState(false);
-    React.useEffect(() => {
-        setIsClicked(false);
-    }, []);
+    // React.useEffect(() => {
+    //     setIsClicked(false);
+    // }, []);
 
     return (
         <div>

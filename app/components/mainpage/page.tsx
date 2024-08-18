@@ -10,7 +10,8 @@ interface MainPageProps {
   value: string; // The prop that is passed to MainPage
 }
 
-export default function MainPage({ value }: MainPageProps) { // Ensure props are typed
+
+export default function MainPage() {
   const [urlParam, setUrlParam] = useState<string | null>(null);
 
   useEffect(() => {
@@ -21,17 +22,21 @@ export default function MainPage({ value }: MainPageProps) { // Ensure props are
   }, []);
 
   // Use the hook value to control rendering
-  if (urlParam === "1") {
+  if ( urlParam === '1') {
     return (
       <div>
         <Public />
       </div>
     );
-  } else if (urlParam === "2") {
-    return <div>
-      <p >blaa</p>
-    </div>;
-  } else {
+  } else if (urlParam === '2') {
+    return (
+      <div>
+      {/* <Debngui/> */}
+      </div>
+    );
+  }
+
+  else {
     return (
       <div>
         <SidebarX />

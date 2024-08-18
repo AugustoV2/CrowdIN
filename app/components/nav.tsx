@@ -4,7 +4,7 @@ import { IoReorderThreeOutline } from "react-icons/io5";
 import Sidebar from './mainpage/sidebar';
 
 
-const navbar = () => {
+const Navbar = () => {
     const [isClicked, setIsClicked] = React.useState(false);
 
     if (isClicked) {
@@ -61,4 +61,4 @@ const navbar = () => {
 }
 
 }
-export default navbar
+export default Navbar

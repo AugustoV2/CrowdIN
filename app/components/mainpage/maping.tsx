@@ -38,7 +38,7 @@ const CombinedComponent: React.FC = () => {
 
       const script = document.createElement("script");
       script.id = "google-maps-script";
-      script.src = `https://maps.googleapis.com/maps/api/js?key=`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCYNxPWtXTlus_0V6Ef3TkrHdJV3cB_0Y0`;
       script.async = true;
       script.defer = true;
       script.onload = () => resolve();
@@ -116,7 +116,11 @@ const CombinedComponent: React.FC = () => {
         });
 
         const infoWindow = new google.maps.InfoWindow({
-          content: `<div><strong>${location.title}</strong><br>${location.description}</div>`,
+          content: `
+            <div style="font-size: 14px; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <strong>${location.title}</strong><br>${location.description}
+            </div>
+          `,
         });
 
         // Add event listeners to show/hide InfoWindow

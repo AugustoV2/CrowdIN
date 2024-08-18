@@ -38,11 +38,12 @@ const CombinedComponent: React.FC = () => {
 
       const script = document.createElement("script");
       script.id = "google-maps-script";
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCYNxPWtXTlus_0V6Ef3TkrHdJV3cB_0Y0`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=`;
       script.async = true;
       script.defer = true;
       script.onload = () => resolve();
-      script.onerror = () => reject(new Error("Failed to load Google Maps script"));
+      script.onerror = () =>
+        reject(new Error("Failed to load Google Maps script"));
       document.head.appendChild(script);
     });
   };
@@ -116,13 +117,24 @@ const CombinedComponent: React.FC = () => {
         });
 
         const infoWindow = new google.maps.InfoWindow({
-          content: `
-            <div style="font-size: 14px; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-              <strong>${location.title}</strong><br>${location.description}
-            </div>
-          `,
-        });
-
+            content: `
+              <div style="
+                font-size: 14px;
+                max-width: 200px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                background-color: #ffffff; /* White background */
+                border: 1px solid #dddddd; /* Light border */
+                padding: 10px; /* Padding around the content */
+                border-radius: 4px; /* Rounded corners */
+              ">
+                <strong>Sample Location</strong><br>
+                This is a sample description for the location. It includes details about the place.<br>
+              </div>
+            `,
+          });
+          
+          
         // Add event listeners to show/hide InfoWindow
         marker.addListener("mouseover", () => {
           console.log("Opening InfoWindow for marker:", location.title);

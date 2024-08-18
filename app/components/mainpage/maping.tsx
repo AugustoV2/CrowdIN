@@ -38,7 +38,7 @@ const CombinedComponent: React.FC = () => {
 
       const script = document.createElement("script");
       script.id = "google-maps-script";
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCYNxPWtXTlus_0V6Ef3TkrHdJV3cB_0Y0`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=`;
       script.async = true;
       script.defer = true;
       script.onload = () => resolve();

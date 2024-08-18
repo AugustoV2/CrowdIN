@@ -1,13 +1,13 @@
 import axios from "axios";
 
 export default function loginRequest(username, password) {
-  return axios.post("https://e8b9-136-232-57-110.ngrok-free.app/user/login", {
-    username,
-    password
+  return axios.post("https://412c-103-209-253-33.ngrok-free.app/user/login", {
+    "username":username,
+    "password":password
   })
   .then(response => {
-    if (response.data.token) {
-      localStorage.setItem("token", response.data.token);
+    if (response.data.status === "success") {
+      localStorage.setItem("token", response.data.status);
       return true;
     } else {
       return Promise.reject(new Error("No token returned"));

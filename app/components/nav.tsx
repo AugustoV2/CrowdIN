@@ -12,6 +12,9 @@ const Navbar = () => {
             <div>
                 
                 <Sidebar />
+                <div className="close-icon">
+                    <button onClick={() => setIsClicked(false)}>Close</button>
+                </div>
                 
             </div>
         );

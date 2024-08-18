@@ -1,22 +1,20 @@
 import axios from "axios";
 
 export default function loginRequest(username, password) {
-  return new Promise((resolve, reject) => {
-    axios
-      .post("http://209.97.157.67//api/sign_in", {
-        username,
-        password
-      })
-      .then((response) => {
-        if (response.data.token) {
-          localStorage.setItem("token", response.data.token);
-          resolve(true);
-        } else {
-          reject(false);
-        }
-      })
-      .catch((error) => {
-        reject(error);
-      });
+  return axios.post("https://e8b9-136-232-57-110.ngrok-free.app/user/login", {
+    username,
+    password
+  })
+  .then(response => {
+    if (response.data.token) {
+      localStorage.setItem("token", response.data.token);
+      return true;
+    } else {
+      return Promise.reject(new Error("No token returned"));
+    }
+  })
+  .catch(error => {
+    console.error("Login failed:", error);
+    return Promise.reject(error);
   });
 }

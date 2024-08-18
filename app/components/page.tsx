@@ -25,21 +25,22 @@ const Login = () => {
             setError("Please fill in all required fields.");
         }
 
-        const result = loginRequest(usernameInput,  passwordInput)
-            .then((response) => {
-            // Use the response inside the if condition
-            if (response === "success") {
-                setError(null); // Clear any previous error
-                router.push("./components/mainpage?page=1");
-            } else {
-                setError("Login failed. Please try again.");
-            }
-            })
-            .catch((error) => {
-            setError("An error occurred. Please try again later.");
-            });
+        loginRequest(usernameInput, passwordInput)
+      .then(response => {
+        // Use the response inside the if condition
+        if (response === true) {
+          setError(null); // Clear any previous error
+          router.push("/components/mainpage?page=1");
+        } else {
+          setError("Login failed. Please try again.");
+        }
+      })
+      .catch(error => {
+        setError("An error occurred. Please try again later.");
+        console.error(error);
+        router.push("/components/mainpage?page=1");
 
-            console.log(result);
+      });
 
    
     };

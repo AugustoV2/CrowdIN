@@ -1,38 +1,37 @@
-'use client'
+"use client";
 
-import React from 'react'
-import Public from './public'
-import { useEffect,useState } from 'react';
-import SidebarX from './sidebar';
+import React from "react";
+import Public from "./public";
+import { useEffect, useState } from "react";
+import SidebarX from "./sidebar";
 
+// Define the props interface matching the expected props
+interface MainPageProps {
+  value: string; // The prop that is passed to MainPage
+}
 
-export default function MainPage(props: { value: string }) {
+export default function MainPage({ value }: MainPageProps) { // Ensure props are typed
   const [urlParam, setUrlParam] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const searchParams = new URLSearchParams(window.location.search);
-      setUrlParam(searchParams.get('page'));
+      setUrlParam(searchParams.get("page"));
     }
   }, []);
 
   // Use the hook value to control rendering
-  if (props.value === '1' || urlParam === '1') {
+  if (urlParam === "1") {
     return (
-    
       <div>
         <Public />
       </div>
     );
-  } else if (props.value === '2' || urlParam === '2') {
-    return (
-      <div>
-       {/* <offlineai/> */}
-      </div>
-    );
-  }
-
-  else {
+  } else if (urlParam === "2") {
+    return <div>
+      <p >blaa</p>
+    </div>;
+  } else {
     return (
       <div>
         <SidebarX />

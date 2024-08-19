@@ -40,7 +40,7 @@ export default function MainPage() {
         </div>
     );
   }
-  else if (urlParam === '3') {
+  else if (urlParam === '4') {
     return (
       <div>
         <StaffApproval/>

@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
 
 
-const Home = () => {  
+const Home = () => {
   const router = useRouter();
 
   const handleLoginClick = () => {
@@ -35,7 +35,7 @@ const Home = () => {
 
                     'CrowdIN',
                     1000,
-                    'Partner',
+                    'Your Tech Partner',
                     1000,
                     'Helper',
                     1000
@@ -50,7 +50,7 @@ const Home = () => {
 
 
             <p className='mb-8 pt-5 text-gray-500'>
-            Welcome to Crowdin, a revolutionary alert system designed for today's bustling urban environments. In a world where traditional methods often fall short, Crowdin empowers communities with real-time, citizen-driven alerts. Our cutting-edge technology ensures that you receive timely and accurate information during critical events, enhancing public safety and convenience. Join us in transforming how we respond to emergencies and stay informed.
+              Welcome to Crowdin, a revolutionary alert system designed for today's bustling urban environments. In a world where traditional methods often fall short, Crowdin empowers communities with real-time, citizen-driven alerts. Our cutting-edge technology ensures that you receive timely and accurate information during critical events, enhancing public safety and convenience. Join us in transforming how we respond to emergencies and stay informed.
             </p>
 
           </div>
@@ -74,14 +74,14 @@ const Home = () => {
             </button>
           </div>
           <div className='ml-100 mt-10'>
-            <button
-
-              className='px-4  py-3 rounded-full ml-20 bg-white text-black'
-              type='button'
+            <a
+              href="https://envs.sh/iXX.apk"
+              download
+              className='px-4 py-3 rounded-full ml-20 bg-white text-black inline-block'
             >
+              DownloadApp
+            </a>
 
-              DownladAPP
-            </button>
           </div>
 
         </div>

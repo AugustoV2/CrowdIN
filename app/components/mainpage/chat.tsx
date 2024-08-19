@@ -45,7 +45,7 @@ const RenderForm = () => {
   };
 
   useEffect(() => {
-    const sse = new EventSource('https://412c-103-209-253-33.ngrok-free.app/chat_web');
+    const sse = new EventSource('https://0ac5-117-239-78-56.ngrok-free.app/chat_web');
 
 
     sse.onmessage = (event) => {
@@ -86,16 +86,16 @@ const RenderForm = () => {
 
     if (input.trim()) {
       try {
-        const response = await fetch('https://412c-103-209-253-33.ngrok-free.app/add_chat', {
+        const response = await fetch('https://0ac5-117-239-78-56.ngrok-free.app/add_message', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            id: 2022,
+            chat_id: 300961814,
             message: input,
             user: 'sender',
-            timeStamp: new Date().toISOString(), // Using current timestamp
+            timeStamp: 1111, // Using current timestamp
           }),
         });
 
@@ -157,12 +157,12 @@ const RenderForm = () => {
                   <>
                     <ModalHeader className="flex flex-col gap-1 text-black">Raise Your Question</ModalHeader>
                     <ModalBody>
-                      <Input
+                      <input
                         autoFocus
 
-                        label="prompt"
+                       
                         placeholder="Enter Your Question"
-                        variant="bordered"
+                        
                         className=' text-black'
                         value={input}
                         onChange={handleChange}

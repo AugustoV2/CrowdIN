@@ -9,6 +9,10 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite-react/lib/**/*.js",
+    "./pages/**/*.{ts,tsx}",
+    "./public/**/*.html",
+
   ],
   theme: {
     extend: {
@@ -21,7 +25,8 @@ const config: Config = {
   },
   darkMode: "class",
   plugins: [
-    nextui() // Add nextui to the list of plugins
-  ],
+      nextui(),
+      require("flowbite/plugin") // Add nextui to the list of plugins
+    ],
 };
 export default config;

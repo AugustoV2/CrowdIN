@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Public from "./public";
 import SidebarX from "./sidebar";
-import GoogleMapComponent from "./maping"; // Ensure this path is correct based on your file structure
+import CombinedComponent from "./maping"; // Ensure this path is correct based on your file structure
 
 export default function MainPage() {
   const [urlParam, setUrlParam] = useState<string | null>(null);
@@ -28,10 +28,10 @@ export default function MainPage() {
         <p>hoioooo</p>
       </div>
     );
-  } else if (urlParam === "3") {
+  } else if (urlParam === "4") {
     return (
       <div>
-        <GoogleMapComponent />
+        <CombinedComponent />
       </div>
     );
   } else {

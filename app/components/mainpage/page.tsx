@@ -5,6 +5,8 @@ import Public from "./public";
 import { useEffect, useState } from "react";
 import SidebarX from "./sidebar";
 import Chat from "./chat";
+import StaffApproval from "../../admin/approval";
+
 
 
 // Define the props interface matching the expected props
@@ -36,6 +38,13 @@ export default function MainPage() {
       <div>
         <Chat/>
         </div>
+    );
+  }
+  else if (urlParam === '3') {
+    return (
+      <div>
+        <StaffApproval/>
+      </div>
     );
   }
 

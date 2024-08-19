@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import SidebarX from "./sidebar";
 import Chat from "./chat";
 import StaffApproval from "../../admin/approval";
+import Cusat from "./cusat";
+import Count from "./count/page";
 
 
 
@@ -40,10 +42,25 @@ export default function MainPage() {
         </div>
     );
   }
-  else if (urlParam === '4') {
+  else if (urlParam === '3') {
     return (
       <div>
         <StaffApproval/>
+      </div>
+    );
+  }
+  else if (urlParam === '4') {
+    return (
+      <div>
+        <Cusat/>
+       
+      </div>
+    );
+  }
+  else if (urlParam === '5') {
+    return (
+      <div>
+        <Count/>
       </div>
     );
   }

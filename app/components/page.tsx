@@ -38,7 +38,7 @@ const Login = () => {
       .catch(error => {
         setError("An error occurred. Please try again later.");
         console.error(error);
-        router.push("/components/mainpage?page=1");
+        // router.push("/components/mainpage?page=1");
 
       });
 

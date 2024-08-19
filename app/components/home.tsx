@@ -31,12 +31,15 @@ const Home = () => {
                   sequence={[
 
                     'Citizen Alert',
+                    'Citizen Alert',
                     2000,
 
                     'CrowdIN',
                     1000,
                     'Your Tech Partner',
+                    'Your Tech Partner',
                     1000,
+                    'Helper',
                     'Helper',
                     1000
                   ]}
@@ -49,8 +52,9 @@ const Home = () => {
             </div>
 
 
-            <p className='mb-8 pt-5 text-gray-500'>
-              Welcome to Crowdin, a revolutionary alert system designed for today's bustling urban environments. In a world where traditional methods often fall short, Crowdin empowers communities with real-time, citizen-driven alerts. Our cutting-edge technology ensures that you receive timely and accurate information during critical events, enhancing public safety and convenience. Join us in transforming how we respond to emergencies and stay informed.
+            <p className='mb-8 text-gray-500 pt-8'>
+              <br />
+            Welcome to Crowdin, a revolutionary alert system designed for today's bustling urban environments. In a world where traditional methods often fall short, Crowdin empowers communities with real-time, citizen-driven alerts. Our cutting-edge technology ensures that you receive timely and accurate information during critical events, enhancing public safety and convenience. Join us in transforming how we respond to emergencies and stay informed.
             </p>
 
           </div>

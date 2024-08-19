@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Public from "./public";
-import { useEffect, useState } from "react";
 import SidebarX from "./sidebar";
 import Chat from "./chat";
 import StaffApproval from "../../admin/approval";
@@ -19,7 +18,6 @@ interface MainPageProps {
 
 export default function MainPage() {
   const [urlParam, setUrlParam] = useState<string | null>(null);
-  
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -29,13 +27,13 @@ export default function MainPage() {
   }, []);
 
   
-  if ( urlParam === '1') {
+  if (urlParam === "1") {
     return (
       <div>
         <Public />
       </div>
     );
-  } else if (urlParam === '2') {
+  } else if (urlParam === "2") {
     return (
       <div>
         <Chat/>

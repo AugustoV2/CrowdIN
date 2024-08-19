@@ -7,6 +7,7 @@ import Chat from "./chat";
 import StaffApproval from "../../admin/approval";
 import Cusat from "./cusat";
 import Count from "./count/page";
+import CombinedComponent from "./maping";
 
 
 
@@ -59,6 +60,13 @@ export default function MainPage() {
     return (
       <div>
         <Count/>
+      </div>
+    );
+  }
+  else if (urlParam === '6') {
+    return (
+      <div>
+        <CombinedComponent />
       </div>
     );
   }

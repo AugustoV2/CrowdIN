@@ -4,14 +4,21 @@ import { useState } from 'react';
 
 export default function Home() {
     const [input, setInput] = useState('');
-    const [response, setResponse] = useState<any>(null); // Updated type to `any` for flexibility
-    const [error, setError] = useState<string | null>(null); // Explicitly typing `error`
+    const [response, setResponse] = useState<any>(null);
+    const [error, setError] = useState<string | null>(null);
+    const [averagePeople, setAveragePeople] = useState<number | null>(null);
+
+    const calculateAveragePeople = (radius: number) => {
+       
+        return Math.round(3 * radius * radius); 
+    };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setError(null); // Reset error state
+        setError(null); 
 
-        if (isNaN(Number(input)) || Number(input) <= 0) {
+        const radius = Number(input);
+        if (isNaN(radius) || radius <= 0) {
             setError('Please enter a valid positive number for the radius.');
             return;
         }
@@ -24,7 +31,7 @@ export default function Home() {
                 },
                 body: JSON.stringify({
                     username: 'chakka',
-                    radius: Number(input),
+                    radius: radius,
                 }),
             });
 
@@ -34,6 +41,10 @@ export default function Home() {
 
             const data = await res.json();
             setResponse(data);
+
+           
+            const avgPeople = calculateAveragePeople(radius);
+            setAveragePeople(avgPeople);
         } catch (error) {
             console.error('Error:', error);
             setError('An error occurred. Please try again.');
@@ -45,7 +56,7 @@ export default function Home() {
             <h1 className="text-3xl font-bold text-gray-800 mb-6">Enter Radius</h1>
             <form className="bg-white shadow-md rounded-lg p-6 max-w-md w-full" onSubmit={handleSubmit}>
                 <label className="block text-gray-700 text-sm font-medium mb-2">
-                    Radius:
+                    Radius (in meters):
                     <input
                         type="number"
                         value={input}
@@ -77,7 +88,9 @@ export default function Home() {
                         <p className="text-gray-700">
                             <strong>Additional Info:</strong> {response.additionalInfo || 'No additional info available'}
                         </p>
-                        {/* Add more fields if needed */}
+                        <p className="text-gray-700">
+                            <strong>Estimated Average Number of People:</strong> {averagePeople !== null ? averagePeople : 'Calculating...'}
+                        </p>
                     </div>
                 </div>
             )}

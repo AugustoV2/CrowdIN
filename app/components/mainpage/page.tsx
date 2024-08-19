@@ -3,6 +3,10 @@
 import React, { useEffect, useState } from "react";
 import Public from "./public";
 import SidebarX from "./sidebar";
+import Chat from "./chat";
+import StaffApproval from "../../admin/approval";
+
+
 import CombinedComponent from "./maping"; // Ensure this path is correct based on your file structure
 
 export default function MainPage() {
@@ -15,7 +19,7 @@ export default function MainPage() {
     }
   }, []);
 
-  // Use the hook value to control rendering
+  
   if (urlParam === "1") {
     return (
       <div>
@@ -25,7 +29,14 @@ export default function MainPage() {
   } else if (urlParam === "2") {
     return (
       <div>
-        <p>hoioooo</p>
+        <Chat/>
+        </div>
+    );
+  }
+  else if (urlParam === '4') {
+    return (
+      <div>
+        <StaffApproval/>
       </div>
     );
   } else if (urlParam === "4") {

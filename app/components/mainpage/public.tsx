@@ -4,6 +4,7 @@ import { CiImageOn } from "react-icons/ci";
 import { FaMicrophone } from "react-icons/fa6";
 import { useChat } from 'ai/react';
 import { Send } from 'lucide-react';
+import { TypeAnimation } from 'react-type-animation';
 
 const Public = () => {
     const { messages, input, handleInputChange, handleSubmit } = useChat({
@@ -37,11 +38,22 @@ const Public = () => {
                             Hello, Man
                         </h1>
                         <p className='mb-8 text-gray-500 text-3xl'>
-                            How can I help you today?
+                            <h2>
+                                <TypeAnimation
+                                    sequence={[
+
+                                        'How can I help you?',
+                                        3000,
+                                    ]}
+                                    wrapper="span"
+                                    speed={50}
+                                    style={{ fontSize: '1em', display: 'inline-block' }}
+                                    repeat={Infinity}
+                                /></h2>
                         </p>
                         <div className='flex flex-col items-center mt-8 ml-96 '>
                             {messages.map((m, index) => (
-                                <div key={index} className={`p-4 shadow-md rounded-md w-1/2 ${m.role === 'user' ? 'bg-black text-white' : 'bg-gray-200 text-black'}`}>
+                                <div key={index} className={`p-4 shadow-md rounded-md w-1/2 ${m.role === 'user' ? 'bg-black text-gray-500' : 'bg-gray-500 text-black'}`}>
                                     {m.content}
                                 </div>
                             ))}

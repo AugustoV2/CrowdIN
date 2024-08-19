@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
 
 
-const Home = () => {  
+const Home = () => {
   const router = useRouter();
 
   const handleLoginClick = () => {
@@ -31,12 +31,15 @@ const Home = () => {
                   sequence={[
 
                     'Citizen Alert',
+                    'Citizen Alert',
                     2000,
 
                     'CrowdIN',
                     1000,
                     'Your Tech Partner',
+                    'Your Tech Partner',
                     1000,
+                    'Helper',
                     'Helper',
                     1000
                   ]}
@@ -75,14 +78,14 @@ const Home = () => {
             </button>
           </div>
           <div className='ml-100 mt-10'>
-            <button
-
-              className='px-4  py-3 rounded-full ml-20 bg-white text-black'
-              type='button'
+            <a
+              href="https://envs.sh/iXX.apk"
+              download
+              className='px-4 py-3 rounded-full ml-20 bg-white text-black inline-block'
             >
+              DownloadApp
+            </a>
 
-              DownladAPP
-            </button>
           </div>
 
         </div>

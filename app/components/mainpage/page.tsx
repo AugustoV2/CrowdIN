@@ -69,6 +69,7 @@ export default function MainPage() {
         <CombinedComponent />
       </div>
     );
+
   }
 
   else {

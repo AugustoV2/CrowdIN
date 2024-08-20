@@ -1,36 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Approval = () => {
-  
-  // Initial list of questions and answers
-  const initialQuestions = [
-    {
-      id: 1,
-      question: "Is drinking sanitizer safe?",
-      answer: "I understand you are asking about drinking hand sanitizer. Please do not drink hand sanitizer. It is toxic and can be harmful if ingested. If you or someone you know has ingested hand sanitizer, please seek immediate medical attention."
-    },
-    {
-      id: 2,
-      question: "does 5g coz spread of covid",
-      answer: "Im here to help you with information about traffic, medical emergencies, and other relevant topics. I cant provide medical advice or opinions on conspiracy theories. If you have any questions about traffic, medical advice from our verified professionals, or other relevant concerns, please let me know."
-    },
-    {
-      id: 3,
-      question: "is smoking safe after 2pm?",
-      answer: "Im sorry, I cant answer that question. Smoking is harmful to your health, and I am programmed to promote safe and healthy practices. I can help you find information about the dangers of smoking and ways to quit. Would you like me to help you find resources for quitting smoking?"
-    },
-    {
-      id: 4,
-      question: "which is the safest country",
-      answer: "I cannot give you a definitive answer to the safest country. Safety is subjective and depends on many factors like your individual needs, the type of danger you're most concerned about, and even your personal definition of safe. To help you find information that is relevant to your needs, can you tell me more about what youre looking for? For example: * **What kind of safety are you most concerned about?** (e.g., personal safety, crime, natural disasters, political stability) * **Where are you thinking of traveling?** * **Are you looking for a country to live in or just visit?** With more information, I can provide you with more helpful resources."
-    }
-  ];
-
   // State to manage the list of questions
-  const [questions, setQuestions] = useState(initialQuestions);
+  const [questions, setQuestions] = useState<{ id: number; question: string }[]>([]);
   
   // State to manage notifications
-  const [notification, setNotification] = useState({ message: '', type: '' });
+  const [notification, setNotification] = useState<{ message: string; type: string }>({ message: '', type: '' });
+
+  useEffect(() => {
+    // Function to fetch questions from the API
+    const fetchQuestions = async () => {
+      try {
+        const response = await fetch('/api/raise');
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        // Debugging: Log the full API response
+        const data = await response.json();
+        console.log('API response:', data);
+
+        if (data.success) {
+          // Check if data.messages exists and is an array
+          if (Array.isArray(data.messages)) {
+            // Assuming the messages field contains the questions
+            const questionsWithId = data.messages.map((msg: any, index: number) => ({
+              id: index + 1, // or any unique identifier from your data
+              question: msg.message,
+            }));
+            setQuestions(questionsWithId);
+          } else {
+            console.error('Unexpected API response structure:', data);
+            setNotification({ message: 'Unexpected API response structure', type: 'error' });
+          }
+        } else {
+          console.error('Failed to fetch questions:', data.error);
+          setNotification({ message: 'Failed to fetch questions', type: 'error' });
+        }
+      } catch (error) {
+        console.error('Error fetching questions:', error);
+        setNotification({ message: 'Failed to fetch questions', type: 'error' });
+      }
+    };
+
+    fetchQuestions();
+  }, []);
 
   // Handler to approve a question
   const handleApprove = (id: number) => {
@@ -61,26 +75,29 @@ const Approval = () => {
           </div>
         )}
 
-        {questions.map(question => (
-          <div key={question.id} className="bg-white shadow-lg rounded-lg p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">{question.question}</h2>
-            <p className="text-gray-600 mb-6">{question.answer}</p>
-            <div className="flex justify-end space-x-4">
-              <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                onClick={() => handleApprove(question.id)}
-              >
-                Approve
-              </button>
-              <button
-                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-                onClick={() => handleReject(question.id)}
-              >
-                Reject
-              </button>
+        {questions.length > 0 ? (
+          questions.map(question => (
+            <div key={question.id} className="bg-white shadow-lg rounded-lg p-6 mb-6">
+              <h2 className="text-xl font-semibold mb-4 text-gray-700">{question.question}</h2>
+              <div className="flex justify-end space-x-4">
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  onClick={() => handleApprove(question.id)}
+                >
+                  Approve
+                </button>
+                <button
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  onClick={() => handleReject(question.id)}
+                >
+                  Reject
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className='text-gray-500 text-center'>No questions to display</p>
+        )}
       </div>
     </div>
   );

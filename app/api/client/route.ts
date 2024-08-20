@@ -1,6 +1,22 @@
 import { db } from "../../lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
+
+
+import { PrismaClient } from '@prisma/client'
+
+
+// GET /api/client
+const prisma = new PrismaClient()
+export default async function read() {
+    const allUsers = await prisma.client.findMany({
+        where: {
+            email: "soman@hail.com"
+        }
+    });
+    console.log(allUsers);
+}
+
 export async function POST(request: NextRequest) {
     try {
         // Parse the incoming JSON data

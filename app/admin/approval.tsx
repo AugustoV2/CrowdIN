@@ -12,17 +12,17 @@ const Approval = () => {
     {
       id: 2,
       question: "does 5g coz spread of covid",
-      answer: "I'm here to help you with information about traffic, medical emergencies, and other relevant topics. I can't provide medical advice or opinions on conspiracy theories. If you have any questions about traffic, medical advice from our verified professionals, or other relevant concerns, please let me know."
+      answer: "Im here to help you with information about traffic, medical emergencies, and other relevant topics. I cant provide medical advice or opinions on conspiracy theories. If you have any questions about traffic, medical advice from our verified professionals, or other relevant concerns, please let me know."
     },
     {
       id: 3,
       question: "is smoking safe after 2pm?",
-      answer: "I'm sorry, I can't answer that question. Smoking is harmful to your health, and I am programmed to promote safe and healthy practices. I can help you find information about the dangers of smoking and ways to quit. Would you like me to help you find resources for quitting smoking?"
+      answer: "Im sorry, I cant answer that question. Smoking is harmful to your health, and I am programmed to promote safe and healthy practices. I can help you find information about the dangers of smoking and ways to quit. Would you like me to help you find resources for quitting smoking?"
     },
     {
       id: 4,
       question: "which is the safest country",
-      answer: "I cannot give you a definitive answer to the safest country. Safety is subjective and depends on many factors like your individual needs, the type of danger you're most concerned about, and even your personal definition of 'safe.' To help you find information that is relevant to your needs, can you tell me more about what you're looking for? For example: * **What kind of safety are you most concerned about?** (e.g., personal safety, crime, natural disasters, political stability) * **Where are you thinking of traveling?** * **Are you looking for a country to live in or just visit?** With more information, I can provide you with more helpful resources."
+      answer: "I cannot give you a definitive answer to the safest country. Safety is subjective and depends on many factors like your individual needs, the type of danger you're most concerned about, and even your personal definition of safe. To help you find information that is relevant to your needs, can you tell me more about what youre looking for? For example: * **What kind of safety are you most concerned about?** (e.g., personal safety, crime, natural disasters, political stability) * **Where are you thinking of traveling?** * **Are you looking for a country to live in or just visit?** With more information, I can provide you with more helpful resources."
     }
   ];
 

@@ -157,7 +157,7 @@ function CombinedComponent() {
       try {
         const data = event.data;
         console.log("SSE Data:", data);
-        const jsonString = data.replace(/^data:\s*/, "").replace("I'm", "I").replace(/'/g, '"');
+        const jsonString = data.replace(/^data:\s*/, "").replace("Im", "I").replace(/'/g, '"');
         console.log("JSON String:", jsonString);
         const dataObject = JSON.parse(jsonString);
 

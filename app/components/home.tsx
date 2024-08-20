@@ -31,16 +31,16 @@ const Home = () => {
                   sequence={[
 
                     'Citizen Alert',
-                    'Citizen Alert',
+                  
                     2000,
 
                     'CrowdIN',
                     1000,
                     'Your Tech Partner',
-                    'Your Tech Partner',
+                   
                     1000,
                     'Helper',
-                    'Helper',
+                  
                     1000
                   ]}
                   wrapper="span"

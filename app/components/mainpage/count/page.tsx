@@ -1,25 +1,47 @@
 'use client';
 
 import { useState } from 'react';
+import axios, { AxiosError } from 'axios';
+import { useEffect } from 'react';
 
 export default function Home() {
     const [input, setInput] = useState('');
-    const [response, setResponse] = useState<any>(null);
-    const [error, setError] = useState<string | null>(null);
-    const [averagePeople, setAveragePeople] = useState<number | null>(null);
+    const [response, setResponse] = useState(null);
+    const [value, setValue] = useState<String>('');
 
-    const calculateAveragePeople = (radius: number) => {
-       
-        return Math.round(3 * radius * radius); 
-    };
+    const [entries, setEntries] = useState<number>(0);
+    const [entrie, setEntrie] = useState<number>(0);
+
+    
+
+    async function detailsform() {
+        console.log("helooooo");
+
+        try {
+            const res = await axios.get('/api/client');
+
+            console.log("hi");
+            setEntries(res.data.expectedentry);
+            console.log(res.data.expectedentry);
+            console.log(entries);
+
+
+          
+        } catch (e) {
+            if (e instanceof AxiosError) {
+                console.log((e as AxiosError).response?.data);
+            }
+        }
+    }
+    
+
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        setEntrie(12);
         event.preventDefault();
-        setError(null); 
 
-        const radius = Number(input);
-        if (isNaN(radius) || radius <= 0) {
-            setError('Please enter a valid positive number for the radius.');
+        if (isNaN(Number(input)) || Number(input) <= 0) {
+            alert('Please enter a valid positive number for the radius.');
             return;
         }
 
@@ -31,23 +53,19 @@ export default function Home() {
                 },
                 body: JSON.stringify({
                     username: 'chakka',
-                    radius: radius,
+                    radius: Number(input)*10,
                 }),
             });
 
-            if (!res.ok) {
-                throw new Error('Network response was not ok.');
-            }
-
             const data = await res.json();
             setResponse(data);
-
+            setValue(data.count);
+            console.log('helloo');
+            console.log(value);
            
-            const avgPeople = calculateAveragePeople(radius);
-            setAveragePeople(avgPeople);
         } catch (error) {
             console.error('Error:', error);
-            setError('An error occurred. Please try again.');
+            alert('An error occurred. Please try again.');
         }
     };
 
@@ -56,10 +74,10 @@ export default function Home() {
             <h1 className="text-3xl font-bold text-gray-800 mb-6">Enter Radius</h1>
             <form className="bg-white shadow-md rounded-lg p-6 max-w-md w-full" onSubmit={handleSubmit}>
                 <label className="block text-gray-700 text-sm font-medium mb-2">
-                    Radius (in meters):
+                    Radius:
                     <input
                         type="number"
-                        value={input}
+                        value={input} 
                         onChange={(e) => setInput(e.target.value)}
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         placeholder="Enter radius in meters"
@@ -72,26 +90,17 @@ export default function Home() {
                     Send
                 </button>
             </form>
-            {error && (
-                <div className="mt-6 bg-red-100 border border-red-300 text-red-800 p-4 rounded-lg max-w-md w-full">
-                    <h2 className="text-xl font-bold">Error:</h2>
-                    <p>{error}</p>
-                </div>
-            )}
-            {response && !error && (
+            {response && (
                 <div className="mt-6 bg-white shadow-md rounded-lg p-6 max-w-md w-full">
                     <h2 className="text-2xl font-bold text-gray-800 mb-4">Response:</h2>
-                    <div className="space-y-4">
-                        <p className="text-gray-700">
-                            <strong>Number of People Nearby:</strong> {response.numberOfPeople || 'N/A'}
-                        </p>
-                        <p className="text-gray-700">
-                            <strong>Additional Info:</strong> {response.additionalInfo || 'No additional info available'}
-                        </p>
-                        <p className="text-gray-700">
-                            <strong>Estimated Average Number of People:</strong> {averagePeople !== null ? averagePeople : 'Calculating...'}
-                        </p>
-                    </div>
+                    <p className="text-gray-700 mb-2">Count:</p>
+                    <pre className="text-gray-700 whitespace-pre-wrap break-words">{value}</pre>
+                    <p className="text-gray-700 mb-2">Additional Information:</p>
+                    <pre className="text-gray-700 ">No Additional Info</pre>
+                    <p className="text-gray-700 mb-2">Expected People:</p>
+                   
+                    <pre className="text-gray-700 whitespace-pre-wrap break-words">{entrie}</pre>
+
                 </div>
             )}
         </div>

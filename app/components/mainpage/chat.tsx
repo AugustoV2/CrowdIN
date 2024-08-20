@@ -36,12 +36,16 @@ const RenderForm = () => {
 
   const [alerts, setAlerts] = useState<Messages[]>([]);
   const [input, setInput] = useState<string>('');
+  const [input1, setInput1] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
+  };
+  const handle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInput1(event.target.value);
   };
 
   useEffect(() => {
@@ -164,8 +168,8 @@ const RenderForm = () => {
                         placeholder="Enter Your Question"
                         
                         className=' text-black'
-                        value={input}
-                        onChange={handleChange}
+                        value={input1}
+                        onChange={handle}
                       />
 
                       <div className="flex py-2 px-1 justify-between">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const Approval = () => {
+  
   // Initial list of questions and answers
   const initialQuestions = [
     {

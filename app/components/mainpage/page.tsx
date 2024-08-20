@@ -5,7 +5,17 @@ import Public from "./public";
 import SidebarX from "./sidebar";
 import Chat from "./chat";
 import StaffApproval from "../../admin/approval";
-import CombinedComponent from "./maping"; 
+import Cusat from "./cusat";
+import Count from "./count/page";
+import CombinedComponent from "./maping";
+
+
+
+// Define the props interface matching the expected props
+interface MainPageProps {
+  value: string; // The prop that is passed to MainPage
+}
+
 
 export default function MainPage() {
   const [urlParam, setUrlParam] = useState<string | null>(null);
@@ -37,14 +47,32 @@ export default function MainPage() {
         <StaffApproval/>
       </div>
     );
-  } else if (urlParam === "4") {
+  }
+  else if (urlParam === '4') {
+    return (
+      <div>
+        <Cusat/>
+       
+      </div>
+    );
+  }
+  else if (urlParam === '5') {
+    return (
+      <div>
+        <Count/>
+      </div>
+    );
+  }
+  else if (urlParam === '6') {
     return (
       <div>
         <CombinedComponent />
       </div>
     );
 
-  } else {
+  }
+
+  else {
     return (
       <div>
         <SidebarX />

@@ -5,9 +5,7 @@ import Public from "./public";
 import SidebarX from "./sidebar";
 import Chat from "./chat";
 import StaffApproval from "../../admin/approval";
-
-
-import CombinedComponent from "./maping"; // Ensure this path is correct based on your file structure
+import CombinedComponent from "./maping"; 
 
 export default function MainPage() {
   const [urlParam, setUrlParam] = useState<string | null>(null);
@@ -33,7 +31,7 @@ export default function MainPage() {
         </div>
     );
   }
-  else if (urlParam === '4') {
+  else if (urlParam === '3') {
     return (
       <div>
         <StaffApproval/>
@@ -45,6 +43,7 @@ export default function MainPage() {
         <CombinedComponent />
       </div>
     );
+
   } else {
     return (
       <div>

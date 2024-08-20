@@ -45,7 +45,7 @@ const RenderForm = () => {
   };
 
   useEffect(() => {
-    const sse = new EventSource('https://0ac5-117-239-78-56.ngrok-free.app/chat_web');
+    const sse = new EventSource('https://3fc8ee11474726bc33447804115cb41f.serveo.net/chat_web');
 
 
     sse.onmessage = (event) => {

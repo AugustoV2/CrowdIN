@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   const reqBody = await req.json();
   const prompt = reqBody.data.prompt;
 
-  const genAI = new GoogleGenerativeAI('AIzaSyAA_Ow5GgRLBCpHTZpmwu9gyp1_DgJiTgk');
+  const genAI = new GoogleGenerativeAI('aaaaa');
 
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
